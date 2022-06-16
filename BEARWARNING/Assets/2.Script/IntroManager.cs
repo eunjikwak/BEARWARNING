@@ -5,16 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
+    public GameObject anyKeyTxt;
+    public GameObject button;
 
-    public GameObject dontDestory;
-
-    private void Awake()
-    {
-        //씬이 전환 되어도 삭제되지 않게 
-        DontDestroyOnLoad(dontDestory);
-
-
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +20,12 @@ public class IntroManager : MonoBehaviour
         //아무키나 누르면
         if(Input.anyKeyDown)
         {
-            //시작 화면으로 씬전환
-            SceneManager.LoadScene(1);
+            //텍스트 비활성화 
+
+            anyKeyTxt.SetActive(false);
+
+            //버튼 활성화 
+            button.SetActive(true);
         }
         
     }
