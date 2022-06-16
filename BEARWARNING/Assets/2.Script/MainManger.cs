@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainManger : MonoBehaviour
 {
 
     public GameObject SetView;
+    public Toggle [] CarsBtn;
+    public GameObject CarSkin;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,15 +19,18 @@ public class MainManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StartClick()
     {
         //«√∑π¿Ã æ¿¿∏∑Œ ¿¸»Ø
         SceneManager.LoadScene(2);
-        //∞ı ªË¡¶ 
-        Destroy(GameObject.Find("Object").gameObject);
+
+        //∞ı ªË¡¶
+        GameObject.Find("Object").gameObject.SetActive(false);
+
+      
     }
 
     public void SetClick()
@@ -36,4 +42,23 @@ public class MainManger : MonoBehaviour
     {
         SetView.SetActive(false);
     }
+
+    public void CarCheck2()
+    {
+       
+        CarsBtn[0].isOn = false;
+       // CarsBtn[1].isOn = true;
+
+        
+
+
+    }
+    public void CarCheck1()
+    {
+        
+        CarsBtn[1].isOn = false;
+       // CarsBtn[0].isOn = true;
+
+    }
+
 }
