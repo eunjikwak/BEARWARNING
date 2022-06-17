@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     //저장할 자동차스킨
     public Texture2D carSkin;
+
+    public int hp, min, max;
    
 
    

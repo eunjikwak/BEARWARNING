@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - person
+  - invisible
+  - StartLine
   layers:
   - Default
   - TransparentFX

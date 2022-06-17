@@ -19,26 +19,63 @@ public class SettingManager : MonoBehaviour
     //픽토그램 설정버튼
     public GameObject setting_play;
 
+    //랜덤버튼 사용 끝 
+    public GameObject ramdom_end;
+    //랜덤버튼 사용 버튼
+    public GameObject ramdom_start;
+    //랜덤 hp이미지(능력치)
+    public Image[] random_hp_img;
+    //랜덤 hp이미지 (게임중)
+    public Image[] hp_img;
+    //랜덤 hp이미지_활성화
+    public Sprite ramdom_hp_T;
+    //슬라이더 변수
+   public Slider[] speed_bar;
 
     // Start is called before the first frame update
     void Start()
     {
-      
+
+ 
+
+    }
+
+
+    //랜덤 버튼을 클릭하면
+    public void RandomClick()
+    {
+        //랜덤 텍스트 배열로 받아오기 
+        Text[] randomtxt = powerview.GetComponentsInChildren<Text>();
+
+        //랜덤값 설정
+        GameManager.instance.hp= Random.Range(3, 6);
+        GameManager.instance.min = Random.Range(30,61);
+        GameManager.instance.max = Random.Range(80, 131);
+  
+        //랜덤 텍스트 적용
+        randomtxt[1].text = "Hp : " + GameManager.instance.hp;
+        randomtxt[2].text = "기본속도 : " + GameManager.instance.min+"km";
+        randomtxt[3].text = "최대속도 : " + GameManager.instance.max + "km";
+
+        //랜덤 hp이미지 구현
+        for (int i = 0; i < GameManager.instance.hp; i++)
+        {
+            //이미지 스프라이트 변경
+            random_hp_img[i].sprite = ramdom_hp_T;
+            hp_img[i].sprite = ramdom_hp_T;
+        }
+        //랜덤 기본속도 슬라이더 구현(기본속도는 최대60km랜덤이라 최대속도를 1로 맞춤)
+        speed_bar[0].value = GameManager.instance.min / 100f/0.6f;
+        //랜덤 최대속도 슬라이더 구현 (기본속도는 최대 130이라 최대속도를 1로 맞춤)
+        speed_bar[1].value = GameManager.instance.max / 100f/1.3f;
+
+        //랜덤 버튼 1번 사용하도록 구현
+        ramdom_start.SetActive(false);
+        ramdom_end.SetActive(true);
 
 
 
     }
-
-    //void RandomClick()
-    //{
-    //    Text[] randomtxt = powerview.GetComponentsInChildren<Text>();
-
-
-    //    //for (int i = 0; i <randomtxt.Length; i++)
-    //    //{
-    //    //    print(randomtxt[i].text);
-    //    //}
-    //}
 
     // Update is called once per frame
     void Update()
@@ -88,6 +125,7 @@ public class SettingManager : MonoBehaviour
 
         //플레이씬 전환
         SceneManager.LoadScene(1);
+
       
     }
 
