@@ -148,4 +148,8 @@ public class SettingManager : MonoBehaviour
       
     }
 
+    public void EndingClick()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

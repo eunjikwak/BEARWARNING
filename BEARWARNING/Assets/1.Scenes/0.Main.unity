@@ -1315,6 +1315,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carSkin: {fileID: 2800000, guid: d632a79f8e252c74eabb49cba9716032, type: 3}
+  hp: 0
+  min: 0
+  max: 0
 --- !u!4 &456110792
 Transform:
   m_ObjectHideFlags: 0
@@ -3698,7 +3701,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.31132078, g: 0.285663, b: 0.2627451, a: 1}
+  m_BackGroundColor: {r: 0.30980393, g: 0.28627452, b: 0.2627451, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
