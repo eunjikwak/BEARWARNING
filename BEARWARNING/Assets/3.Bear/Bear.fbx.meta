@@ -1,111 +1,317 @@
 fileFormatVersion: 2
 guid: 73108f072615cdf409e918bd180d203e
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: arm_1_L
-    100002: arm_1_R
-    100004: arm_2_ctrl_L
-    100006: arm_2_ctrl_R
-    100008: arm_2_L
-    100010: arm_2_R
-    100012: b_finger_L
-    100014: b_finger_R
-    100016: back
-    100018: //RootNode
-    100020: Bear
-    100022: chain_back_down_L
-    100024: chain_back_down_R
-    100026: chain_back_up_L
-    100028: chain_back_up_R
-    100030: chain_front_down_L
-    100032: chain_front_down_R
-    100034: chain_front_up_L
-    100036: chain_front_up_R
-    100038: chain_middle_L
-    100040: chain_middle_R
-    100042: chest
-    100044: fingers_L
-    100046: fingers_R
-    100048: foot_L
-    100050: foot_R
-    100052: head
-    100054: joint10
-    100056: joint10 1
-    100058: joint11
-    100060: joint14
-    100062: leg_1_L
-    100064: leg_1_R
-    100066: leg_2_L
-    100068: leg_2_R
-    100070: neck
-    100072: pelvis
-    100074: ring
-    100076: root
-    100078: shield
-    100080: shoulder_ctrl_L
-    100082: shoulder_ctrl_R
-    100084: shoulder_L
-    100086: shoulder_R
-    100088: toe_L
-    100090: toe_R
-    400000: arm_1_L
-    400002: arm_1_R
-    400004: arm_2_ctrl_L
-    400006: arm_2_ctrl_R
-    400008: arm_2_L
-    400010: arm_2_R
-    400012: b_finger_L
-    400014: b_finger_R
-    400016: back
-    400018: //RootNode
-    400020: Bear
-    400022: chain_back_down_L
-    400024: chain_back_down_R
-    400026: chain_back_up_L
-    400028: chain_back_up_R
-    400030: chain_front_down_L
-    400032: chain_front_down_R
-    400034: chain_front_up_L
-    400036: chain_front_up_R
-    400038: chain_middle_L
-    400040: chain_middle_R
-    400042: chest
-    400044: fingers_L
-    400046: fingers_R
-    400048: foot_L
-    400050: foot_R
-    400052: head
-    400054: joint10
-    400056: joint10 1
-    400058: joint11
-    400060: joint14
-    400062: leg_1_L
-    400064: leg_1_R
-    400066: leg_2_L
-    400068: leg_2_R
-    400070: neck
-    400072: pelvis
-    400074: ring
-    400076: root
-    400078: shield
-    400080: shoulder_ctrl_L
-    400082: shoulder_ctrl_R
-    400084: shoulder_L
-    400086: shoulder_R
-    400088: toe_L
-    400090: toe_R
-    2100000: lambert20
-    4300000: Bear
-    7400000: Bear_stand
-    7400002: Bear_idle
-    7400004: Bear_attack
-    7400006: Bear_walk
-    7400008: Bear_death
-    7400010: Bear_hit
-    7400012: Bear_Tpose
-    9500000: //RootNode
-    13700000: Bear
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: arm_1_L
+  - first:
+      1: 100002
+    second: arm_1_R
+  - first:
+      1: 100004
+    second: arm_2_ctrl_L
+  - first:
+      1: 100006
+    second: arm_2_ctrl_R
+  - first:
+      1: 100008
+    second: arm_2_L
+  - first:
+      1: 100010
+    second: arm_2_R
+  - first:
+      1: 100012
+    second: b_finger_L
+  - first:
+      1: 100014
+    second: b_finger_R
+  - first:
+      1: 100016
+    second: back
+  - first:
+      1: 100018
+    second: //RootNode
+  - first:
+      1: 100020
+    second: Bear
+  - first:
+      1: 100022
+    second: chain_back_down_L
+  - first:
+      1: 100024
+    second: chain_back_down_R
+  - first:
+      1: 100026
+    second: chain_back_up_L
+  - first:
+      1: 100028
+    second: chain_back_up_R
+  - first:
+      1: 100030
+    second: chain_front_down_L
+  - first:
+      1: 100032
+    second: chain_front_down_R
+  - first:
+      1: 100034
+    second: chain_front_up_L
+  - first:
+      1: 100036
+    second: chain_front_up_R
+  - first:
+      1: 100038
+    second: chain_middle_L
+  - first:
+      1: 100040
+    second: chain_middle_R
+  - first:
+      1: 100042
+    second: chest
+  - first:
+      1: 100044
+    second: fingers_L
+  - first:
+      1: 100046
+    second: fingers_R
+  - first:
+      1: 100048
+    second: foot_L
+  - first:
+      1: 100050
+    second: foot_R
+  - first:
+      1: 100052
+    second: head
+  - first:
+      1: 100054
+    second: joint10
+  - first:
+      1: 100056
+    second: joint10 1
+  - first:
+      1: 100058
+    second: joint11
+  - first:
+      1: 100060
+    second: joint14
+  - first:
+      1: 100062
+    second: leg_1_L
+  - first:
+      1: 100064
+    second: leg_1_R
+  - first:
+      1: 100066
+    second: leg_2_L
+  - first:
+      1: 100068
+    second: leg_2_R
+  - first:
+      1: 100070
+    second: neck
+  - first:
+      1: 100072
+    second: pelvis
+  - first:
+      1: 100074
+    second: ring
+  - first:
+      1: 100076
+    second: root
+  - first:
+      1: 100078
+    second: shield
+  - first:
+      1: 100080
+    second: shoulder_ctrl_L
+  - first:
+      1: 100082
+    second: shoulder_ctrl_R
+  - first:
+      1: 100084
+    second: shoulder_L
+  - first:
+      1: 100086
+    second: shoulder_R
+  - first:
+      1: 100088
+    second: toe_L
+  - first:
+      1: 100090
+    second: toe_R
+  - first:
+      4: 400000
+    second: arm_1_L
+  - first:
+      4: 400002
+    second: arm_1_R
+  - first:
+      4: 400004
+    second: arm_2_ctrl_L
+  - first:
+      4: 400006
+    second: arm_2_ctrl_R
+  - first:
+      4: 400008
+    second: arm_2_L
+  - first:
+      4: 400010
+    second: arm_2_R
+  - first:
+      4: 400012
+    second: b_finger_L
+  - first:
+      4: 400014
+    second: b_finger_R
+  - first:
+      4: 400016
+    second: back
+  - first:
+      4: 400018
+    second: //RootNode
+  - first:
+      4: 400020
+    second: Bear
+  - first:
+      4: 400022
+    second: chain_back_down_L
+  - first:
+      4: 400024
+    second: chain_back_down_R
+  - first:
+      4: 400026
+    second: chain_back_up_L
+  - first:
+      4: 400028
+    second: chain_back_up_R
+  - first:
+      4: 400030
+    second: chain_front_down_L
+  - first:
+      4: 400032
+    second: chain_front_down_R
+  - first:
+      4: 400034
+    second: chain_front_up_L
+  - first:
+      4: 400036
+    second: chain_front_up_R
+  - first:
+      4: 400038
+    second: chain_middle_L
+  - first:
+      4: 400040
+    second: chain_middle_R
+  - first:
+      4: 400042
+    second: chest
+  - first:
+      4: 400044
+    second: fingers_L
+  - first:
+      4: 400046
+    second: fingers_R
+  - first:
+      4: 400048
+    second: foot_L
+  - first:
+      4: 400050
+    second: foot_R
+  - first:
+      4: 400052
+    second: head
+  - first:
+      4: 400054
+    second: joint10
+  - first:
+      4: 400056
+    second: joint10 1
+  - first:
+      4: 400058
+    second: joint11
+  - first:
+      4: 400060
+    second: joint14
+  - first:
+      4: 400062
+    second: leg_1_L
+  - first:
+      4: 400064
+    second: leg_1_R
+  - first:
+      4: 400066
+    second: leg_2_L
+  - first:
+      4: 400068
+    second: leg_2_R
+  - first:
+      4: 400070
+    second: neck
+  - first:
+      4: 400072
+    second: pelvis
+  - first:
+      4: 400074
+    second: ring
+  - first:
+      4: 400076
+    second: root
+  - first:
+      4: 400078
+    second: shield
+  - first:
+      4: 400080
+    second: shoulder_ctrl_L
+  - first:
+      4: 400082
+    second: shoulder_ctrl_R
+  - first:
+      4: 400084
+    second: shoulder_L
+  - first:
+      4: 400086
+    second: shoulder_R
+  - first:
+      4: 400088
+    second: toe_L
+  - first:
+      4: 400090
+    second: toe_R
+  - first:
+      21: 2100000
+    second: lambert20
+  - first:
+      43: 4300000
+    second: Bear
+  - first:
+      74: 7400000
+    second: Bear_stand
+  - first:
+      74: 7400002
+    second: Bear_idle
+  - first:
+      74: 7400004
+    second: Bear_attack
+  - first:
+      74: 7400006
+    second: Bear_walk
+  - first:
+      74: 7400008
+    second: Bear_death
+  - first:
+      74: 7400010
+    second: Bear_hit
+  - first:
+      74: 7400012
+    second: Bear_Tpose
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Bear
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -113,7 +319,7 @@ ModelImporter:
       name: lambert20
     second: {fileID: 2100000, guid: 343044dc0f7f567479a55a7e6e0d2c7e, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -138,7 +344,210 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Bear_stand
+      takeName: Bear_stand
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bear_idle
+      takeName: Bear_idle
+      internalID: 0
+      firstFrame: 80
+      lastFrame: 260
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bear_attack
+      takeName: Bear_attack
+      internalID: 0
+      firstFrame: 280
+      lastFrame: 314
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 280
+    - serializedVersion: 16
+      name: Bear_walk
+      takeName: Bear_walk
+      internalID: 0
+      firstFrame: 340
+      lastFrame: 380
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bear_death
+      takeName: Bear_death
+      internalID: 0
+      firstFrame: 390
+      lastFrame: 464
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bear_hit
+      takeName: Bear_hit
+      internalID: 0
+      firstFrame: 470
+      lastFrame: 507
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bear_Tpose
+      takeName: Bear_Tpose
+      internalID: 0
+      firstFrame: 520
+      lastFrame: 560
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -146,25 +555,32 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -173,10 +589,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -186,13 +602,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

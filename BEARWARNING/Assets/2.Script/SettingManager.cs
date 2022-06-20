@@ -30,13 +30,16 @@ public class SettingManager : MonoBehaviour
     //랜덤 hp이미지_활성화
     public Sprite ramdom_hp_T;
     //슬라이더 변수
-   public Slider[] speed_bar;
+    public Slider[] speed_bar;
+    //능력창_스타트버튼
+    public Button start_btn;
+    
 
     // Start is called before the first frame update
     void Start()
     {
 
- 
+        
 
     }
 
@@ -73,7 +76,7 @@ public class SettingManager : MonoBehaviour
         ramdom_start.SetActive(false);
         ramdom_end.SetActive(true);
 
-
+        start_btn.interactable = true;
 
     }
 
@@ -99,6 +102,7 @@ public class SettingManager : MonoBehaviour
     //스타트 버튼을 클릭했다면 
     public void StartClick()
     {
+  
 
         //능력치창 비활성화
         powerview.SetActive(false);
@@ -148,8 +152,14 @@ public class SettingManager : MonoBehaviour
       
     }
 
-    public void EndingClick()
+    public void WinClick()
     {
         SceneManager.LoadScene(2);
+        EndingManager.isDie = false;
+    }
+    public void DieClick()
+    {
+        SceneManager.LoadScene(2);
+        EndingManager.isDie = true;
     }
 }
