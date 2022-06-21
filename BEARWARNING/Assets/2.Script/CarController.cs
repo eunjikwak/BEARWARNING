@@ -132,11 +132,12 @@ public class CarController : MonoBehaviour
            
             print("°¢µµ "+needle.eulerAngles.z);
             print("RPM: "+rpm);
-
+          
             needle.eulerAngles -= new Vector3(0, 0, rpm / 10f);
-        
 
-        }
+
+
+    }
 
         void Steer()
         {
