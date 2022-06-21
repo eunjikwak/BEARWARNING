@@ -10,9 +10,9 @@ public class CarController : MonoBehaviour
     public GameObject playOn;
     public Text speedTxt;
 
-    float speed = 0.0f;
+    public static float speed = 0.0f;
 
-    public RectTransform needle;
+   
     public float rpm;
     //엑셀 (앞/뒤)
     public enum Axel
@@ -117,27 +117,28 @@ public class CarController : MonoBehaviour
             steerInput = Input.GetAxis("Horizontal");
         }
 
-        //움직이는 함수 
-        void Move()
+    //움직이는 함수 
+    void Move()
+    {
+        foreach (var wheel in wheels)
         {
-            foreach (var wheel in wheels)
-            {
-                //바퀴에 회전력을 넣어줘서 움직이게 함 
-                wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
-                rpm = wheel.wheelCollider.rpm*Time.deltaTime;
-            }
+            //바퀴에 회전력을 넣어줘서 움직이게 함 
+            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
+            rpm = wheel.wheelCollider.rpm*Time.deltaTime;
+        }
 
-            speed = Mathf.Clamp(rig.velocity.magnitude * 10f, rig.velocity.magnitude, maxAcceleration);
-
-           
-            print("각도 "+needle.eulerAngles.z);
-            print("RPM: "+rpm);
-          
-            needle.eulerAngles -= new Vector3(0, 0, rpm / 10f);
+ 
+          //speed = rig.velocity.magnitude*10f;
+           speed = Mathf.Clamp(rig.velocity.magnitude * 10f, 0, maxAcceleration);
 
 
-
+      
     }
+
+
+
+    
+    
 
         void Steer()
         {
@@ -166,7 +167,7 @@ public class CarController : MonoBehaviour
                     wheel.wheelCollider.brakeTorque = 300 * brakeAcceleration * Time.deltaTime;
                 }
 
-                needle.eulerAngles = new Vector3(0, 0, 0);
+            
 
             }
             else
