@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
+    //UI활성화버튼
+    public GameObject playOn;
+    public Text speedTxt;
 
-    ////컨트롤 모드 (키보드OR 버튼)
-    //public enum ControlMode
-    //{
-    //    Keyboard,
-    //    Buttons
-    //};
-
+    int speed;
 
     //엑셀 (앞/뒤)
     public enum Axel
@@ -35,11 +33,15 @@ public class CarController : MonoBehaviour
         //엑셀 선택(앞뒤)
         public Axel axel;
     }
-
-   // public ControlMode control;
+   
+    
+    //최저
+    public float minAcceleration;
 
     //최대 가속 
-    public float maxAcceleration = 10.0f;
+    public float maxAcceleration;
+
+  
     //브레이크 가속
     public float brakeAcceleration = 100.0f;
 
@@ -84,7 +86,13 @@ public class CarController : MonoBehaviour
         GetInputs();
         //바퀴 움직이는 함수
         AnimateWheels();
-      
+
+        minAcceleration = GameManager.instance.min;
+        maxAcceleration = GameManager.instance.max;
+       
+        
+        speedTxt.text = speed.ToString("00");
+
     }
 
     void LateUpdate()
@@ -110,12 +118,14 @@ public class CarController : MonoBehaviour
     //움직이는 함수 
     void Move()
     {
+
+        
         foreach (var wheel in wheels)
         {
             //바퀴에 회전력을 넣어줘서 움직이게 함 
-            wheel.wheelCollider.motorTorque = moveInput * 600 * maxAcceleration * Time.deltaTime;
-
-
+            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
+           float rpm = wheel.wheelCollider.rpm/10f;
+            speed = (int)rpm;
         }
     }
 
@@ -178,7 +188,13 @@ public class CarController : MonoBehaviour
         }
     }
 
-   
- 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "StartLine")
+        {
+            playOn.SetActive(true);
+        }
+    }
+
 }
 

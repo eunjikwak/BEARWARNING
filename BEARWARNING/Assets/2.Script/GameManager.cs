@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public Texture2D carSkin;
 
     public int hp, min, max;
-   
+
 
    
     private void Awake()
@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void update()
+    {
+        
+    }
 
 
 }
