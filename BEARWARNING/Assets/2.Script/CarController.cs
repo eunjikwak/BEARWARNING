@@ -10,8 +10,10 @@ public class CarController : MonoBehaviour
     public GameObject playOn;
     public Text speedTxt;
 
-    int speed;
+    float speed = 0.0f;
 
+    public RectTransform needle;
+    public float rpm;
     //엑셀 (앞/뒤)
     public enum Axel
     {
@@ -33,15 +35,15 @@ public class CarController : MonoBehaviour
         //엑셀 선택(앞뒤)
         public Axel axel;
     }
-   
-    
+
+
     //최저
     public float minAcceleration;
 
     //최대 가속 
     public float maxAcceleration;
 
-  
+
     //브레이크 가속
     public float brakeAcceleration = 100.0f;
 
@@ -75,126 +77,132 @@ public class CarController : MonoBehaviour
 
         //리지드 바디 센터질링을 센터질량 변수로 
         rig.centerOfMass = _centerOfMass;
-
-     
-    }
-
-    void Update()
-    {
-
-        //값 받아오기
-        GetInputs();
-        //바퀴 움직이는 함수
-        AnimateWheels();
-
-        minAcceleration = GameManager.instance.min;
-        maxAcceleration = GameManager.instance.max;
-       
-        
-        speedTxt.text = speed.ToString("00");
-
-    }
-
-    void LateUpdate()
-    {
-
-        //움직임함수
-        Move();
-        //핸들각도 함수
-        Steer();
-        //브레이크 함수
-        Brake();
     }
 
 
 
-    //키값 받아오는 함수
-    void GetInputs()
-    {
+        void Update()
+        {
+
+            //값 받아오기
+            GetInputs();
+            //바퀴 움직이는 함수
+            AnimateWheels();
+
+            minAcceleration = GameManager.instance.min;
+            maxAcceleration = GameManager.instance.max;
+
+
+            speedTxt.text = speed.ToString("00");
+
+        }
+
+        void LateUpdate()
+        {
+
+            //움직임함수
+            Move();
+            //핸들각도 함수
+            Steer();
+            //브레이크 함수
+            Brake();
+        }
+
+
+
+        //키값 받아오는 함수
+        void GetInputs()
+        {
             moveInput = Input.GetAxis("Vertical");
             steerInput = Input.GetAxis("Horizontal");
-    }
-
-    //움직이는 함수 
-    void Move()
-    {
-
-        
-        foreach (var wheel in wheels)
-        {
-            //바퀴에 회전력을 넣어줘서 움직이게 함 
-            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
-           float rpm = wheel.wheelCollider.rpm/10f;
-            speed = (int)rpm;
         }
-    }
 
-    void Steer()
-    {
-        foreach (var wheel in wheels)
-        {
-            //휠 엑셀이 앞 엑셀이면 
-            if (wheel.axel == Axel.Front)
-            {
-                //핸들 각도 = 핸들받아온 값 * 회전 감도 * 최대 핸들각도
-                var _steerAngle = steerInput * turnSensitivity * maxSteerAngle;
-                //바퀴가 기존 핸들 각도에서 0.6속도로  _핸들각도로 변화된다. 
-                wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, _steerAngle, 0.6f);
-            }
-        }
-    }
-
-    void Brake()
-    {
-
-        //스페이스를 누르거나 받아오는 값이 없다면 
-        if (Input.GetKey(KeyCode.Space) || moveInput == 0)
+        //움직이는 함수 
+        void Move()
         {
             foreach (var wheel in wheels)
             {
-                //휠 콜라이더 브레이크 회전력을 멈추기
-                wheel.wheelCollider.brakeTorque = 300 * brakeAcceleration * Time.deltaTime;
+                //바퀴에 회전력을 넣어줘서 움직이게 함 
+                wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
+                rpm = wheel.wheelCollider.rpm*Time.deltaTime;
             }
 
-      
-        }
-        else
-        {
+            speed = Mathf.Clamp(rig.velocity.magnitude * 10f, rig.velocity.magnitude, maxAcceleration);
+
            
+            print("각도 "+needle.eulerAngles.z);
+            print("RPM: "+rpm);
+
+            needle.eulerAngles -= new Vector3(0, 0, rpm / 10f);
+        
+
+        }
+
+        void Steer()
+        {
             foreach (var wheel in wheels)
             {
-                //브레이크회전력에 0을 넣어줌 
-                wheel.wheelCollider.brakeTorque = 0;
+                //휠 엑셀이 앞 엑셀이면 
+                if (wheel.axel == Axel.Front)
+                {
+                    //핸들 각도 = 핸들받아온 값 * 회전 감도 * 최대 핸들각도
+                    var _steerAngle = steerInput * turnSensitivity * maxSteerAngle;
+                    //바퀴가 기존 핸들 각도에서 0.6속도로  _핸들각도로 변화된다. 
+                    wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, _steerAngle, 0.6f);
+                }
             }
-
         }
-    }
 
-
-    //휠의 애니메이션 
-    void AnimateWheels()
-    {
-        foreach (var wheel in wheels)
+        void Brake()
         {
 
-             
-            //회전
-            Quaternion rot;
-            //포지션 변수
-            Vector3 pos;
-            wheel.wheelCollider.GetWorldPose(out pos, out rot);
-            wheel.wheelModel.transform.position = pos;
-            wheel.wheelModel.transform.rotation = rot;
-        }
-    }
+            //스페이스를 누르거나 받아오는 값이 없다면 
+            if (Input.GetKey(KeyCode.Space) || moveInput == 0)
+            {
+                foreach (var wheel in wheels)
+                {
+                    //휠 콜라이더 브레이크 회전력을 멈추기
+                    wheel.wheelCollider.brakeTorque = 300 * brakeAcceleration * Time.deltaTime;
+                }
 
-    private void OnTriggerEnter(Collider other)
+                needle.eulerAngles = new Vector3(0, 0, 0);
+
+            }
+            else
+            {
+
+                foreach (var wheel in wheels)
+                {
+                    //브레이크회전력에 0을 넣어줌 
+                    wheel.wheelCollider.brakeTorque = 0;
+                }
+
+            }
+        }
+
+
+        //휠의 애니메이션 
+        void AnimateWheels()
+        {
+            foreach (var wheel in wheels)
+            {
+                //회전
+                Quaternion rot;
+                //포지션 변수
+                Vector3 pos;
+                wheel.wheelCollider.GetWorldPose(out pos, out rot);
+                wheel.wheelModel.transform.position = pos;
+                wheel.wheelModel.transform.rotation = rot;
+            }
+        }
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "StartLine")
         {
             playOn.SetActive(true);
         }
     }
-
 }
+
+
 
