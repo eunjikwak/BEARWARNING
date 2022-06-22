@@ -129,7 +129,7 @@ public class CarController : MonoBehaviour
 
  
           //speed = rig.velocity.magnitude*10f;
-           speed = Mathf.Clamp(rig.velocity.magnitude * 10f, 0, maxAcceleration);
+           speed = Mathf.Clamp(rig.velocity.magnitude * 3.78f*5f, 0, maxAcceleration);
 
 
       
@@ -202,6 +202,7 @@ public class CarController : MonoBehaviour
         if (other.tag == "StartLine")
         {
             playOn.SetActive(true);
+           // playOn.SendMessage("TimeStart");
         }
     }
 }

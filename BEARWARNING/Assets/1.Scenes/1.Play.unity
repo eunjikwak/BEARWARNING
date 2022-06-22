@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 2b37786ba0e6eee47b0c9d8ad67884dc, type: 2}
 --- !u!1 &1331871
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,7 +3475,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &806116171
 MeshCollider:
@@ -4355,6 +4355,8 @@ GameObject:
   - component: {fileID: 977297903}
   - component: {fileID: 977297902}
   - component: {fileID: 977297901}
+  - component: {fileID: 977297905}
+  - component: {fileID: 977297906}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -4439,6 +4441,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &977297905
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977297900}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &977297906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977297900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b3682f86a7f14449f514fd794ade48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &985600501
 GameObject:
   m_ObjectHideFlags: 0
@@ -6713,7 +6749,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1581122815}
   - component: {fileID: 1581122814}
-  - component: {fileID: 1581122816}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -6771,19 +6806,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1581122816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581122813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f60f28ca0d2974fa07d5781cbe3206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needle: {fileID: 932865173}
 --- !u!1 &1589662504
 GameObject:
   m_ObjectHideFlags: 0
@@ -8875,6 +8897,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063647578}
+  - component: {fileID: 2063647579}
   m_Layer: 0
   m_Name: PlayON
   m_TagString: Untagged
@@ -8907,6 +8930,20 @@ Transform:
   m_Father: {fileID: 1331875}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2063647579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063647577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f60f28ca0d2974fa07d5781cbe3206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needle: {fileID: 932865173}
+  playTime: {fileID: 704133813}
 --- !u!1 &2077224879
 GameObject:
   m_ObjectHideFlags: 0

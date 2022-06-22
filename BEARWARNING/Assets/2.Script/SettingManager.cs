@@ -52,7 +52,7 @@ public class SettingManager : MonoBehaviour
 
         //랜덤값 설정
         GameManager.instance.hp= Random.Range(3, 6);
-        GameManager.instance.min = Random.Range(30,61);
+        GameManager.instance.min = Random.Range(50,80);
         GameManager.instance.max = Random.Range(80, 131);
   
         //랜덤 텍스트 적용
