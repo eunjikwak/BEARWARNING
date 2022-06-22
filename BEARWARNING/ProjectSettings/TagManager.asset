@@ -7,6 +7,10 @@ TagManager:
   - person
   - invisible
   - StartLine
+  - Bear
+  - Coin
+  - Camera
+  - Honey
   layers:
   - Default
   - TransparentFX

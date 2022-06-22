@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class GameManager : MonoBehaviour
 {
     //어디서든 사용할 수 있도록 스태틱화
@@ -11,9 +12,12 @@ public class GameManager : MonoBehaviour
 
     //저장할 자동차스킨
     public Texture2D carSkin;
-
+    //자동차 기능 값 랜덤
     public int hp, min, max;
 
+
+    //시간 
+    public string lastTime;
 
    
     private void Awake()

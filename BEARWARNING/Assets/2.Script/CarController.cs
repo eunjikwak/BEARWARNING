@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CarController : MonoBehaviour
 {
     //UI활성화버튼
-    public GameObject playOn;
+    
     public Text speedTxt;
 
     public static float speed = 0.0f;
@@ -135,9 +135,6 @@ public class CarController : MonoBehaviour
       
     }
 
-
-
-    
     
 
         void Steer()
@@ -197,14 +194,7 @@ public class CarController : MonoBehaviour
                 wheel.wheelModel.transform.rotation = rot;
             }
         }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "StartLine")
-        {
-            playOn.SetActive(true);
-           // playOn.SendMessage("TimeStart");
-        }
-    }
+   
 }
 
 

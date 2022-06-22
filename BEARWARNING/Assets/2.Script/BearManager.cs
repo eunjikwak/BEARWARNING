@@ -7,16 +7,34 @@ public class BearManager : MonoBehaviour
 {
     NavMeshAgent agent;
     Transform player;
+
+   public bool isON=false;
+
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<CarController>().transform;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.Move(player.position);
+
+          if(isON)
+        {
+            BearMove();
+        }
+
     }
+
+
+    void BearMove()
+    {
+        //agent.destination = player.position;
+    }
+
+
 }

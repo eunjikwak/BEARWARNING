@@ -15,11 +15,17 @@ public class GameUIManager : MonoBehaviour
     int sec, min;
 
     public Text playTime;
-    
+
+    public Image [] hp_img;
+    public Sprite ramdom_hp_F;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<BearManager>().isON = true;
+
+        
         
     }
 
@@ -54,8 +60,21 @@ public class GameUIManager : MonoBehaviour
         }
 
         playTime.text = min.ToString("00:") + sec.ToString("00");
+        GameManager.instance.lastTime = playTime.text;
+
+    }
+
+    public void hpUpdate()
+    {
+        print("hp업데이트함수 호출");
 
 
+        //랜덤 hp이미지 구현
+        for (int i =4; i >= GameManager.instance.hp; i--)
+        {
+            //이미지 스프라이트 변경
+            hp_img[i].sprite = ramdom_hp_F;
+        }
     }
 
 }

@@ -67,8 +67,8 @@ public class SettingManager : MonoBehaviour
             random_hp_img[i].sprite = ramdom_hp_T;
             hp_img[i].sprite = ramdom_hp_T;
         }
-        //랜덤 기본속도 슬라이더 구현(기본속도는 최대60km랜덤이라 최대속도를 1로 맞춤)
-        speed_bar[0].value = GameManager.instance.min / 100f/0.6f;
+        //랜덤 기본속도 슬라이더 구현(기본속도는 최대80km랜덤이라 최대속도를 1로 맞춤)
+        speed_bar[0].value = GameManager.instance.min / 100f/0.8f;
         //랜덤 최대속도 슬라이더 구현 (기본속도는 최대 130이라 최대속도를 1로 맞춤)
         speed_bar[1].value = GameManager.instance.max / 100f/1.3f;
 
@@ -152,11 +152,15 @@ public class SettingManager : MonoBehaviour
       
     }
 
+
+    //해피엔딩
     public void WinClick()
     {
         SceneManager.LoadScene(2);
         EndingManager.isDie = false;
     }
+    
+    //새드엔딩
     public void DieClick()
     {
         SceneManager.LoadScene(2);

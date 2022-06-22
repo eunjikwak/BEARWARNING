@@ -27,7 +27,7 @@ public class EndingManager : MonoBehaviour
             bear_qt.eulerAngles = new Vector3(0, 270, 0);
             end_title.text = "DIE";
             end_img.sprite = die_img;
-            end_img.GetComponentInChildren<Text>().text = "곰을 만나고 죽은 시간 00:00";
+            end_img.GetComponentInChildren<Text>().text = "곰을 만나고 죽은 시간 " + GameManager.instance.lastTime;
             end_text.text = "조심하라고 했는데… \n안타까운 죽음이군요";
             bear_anim.SetTrigger("Die");
         }
