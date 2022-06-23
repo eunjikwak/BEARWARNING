@@ -43,10 +43,19 @@ public class CarManager : MonoBehaviour
                 }
                 break;
 
+            
+        }
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+       switch(other.gameObject.tag)
+        {
             case "Coin":
 
                 print("ÄÚÀÎ¸ÔÀ½");
-                Destroy(collision.collider.gameObject);
+                Destroy(other.gameObject);
 
                 break;
 
@@ -54,7 +63,7 @@ public class CarManager : MonoBehaviour
             case "Camera":
 
                 print("Ä«¸Þ¶ó¸ÔÀ½");
-                Destroy(collision.collider.gameObject);
+                Destroy(other.gameObject);
 
                 break;
 
@@ -62,10 +71,9 @@ public class CarManager : MonoBehaviour
             case "Honey":
 
                 print("²Ü¸ÔÀ½");
-                Destroy(collision.collider.gameObject);
+                Destroy(other.gameObject);
 
                 break;
         }
-        
     }
 }

@@ -1341,6 +1341,7 @@ GameObject:
   - component: {fileID: 1078072562}
   - component: {fileID: 1078072564}
   - component: {fileID: 1078072563}
+  - component: {fileID: 1078072565}
   m_Layer: 0
   m_Name: CAR
   m_TagString: Untagged
@@ -1392,6 +1393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fc52cbe06865f4db19725beab05649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedTxt: {fileID: 0}
+  rpm: 0
+  minAcceleration: 600
   maxAcceleration: 10
   brakeAcceleration: 100
   turnSensitivity: 1
@@ -1410,6 +1414,19 @@ MonoBehaviour:
   - wheelModel: {fileID: 832240158}
     wheelCollider: {fileID: 206868359}
     axel: 1
+--- !u!114 &1078072565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078072561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746bbfb1d6673874896bd6bf9597762a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOn: {fileID: 0}
 --- !u!1 &1094071740
 GameObject:
   m_ObjectHideFlags: 0
