@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     //시간 
     public string lastTime;
 
+
+    public int coin;
    
     private void Awake()
     { //인스턴스가 존재하지 않는 다면 나를 할당

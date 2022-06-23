@@ -11,6 +11,7 @@ TagManager:
   - Coin
   - Camera
   - Honey
+  - Oil
   layers:
   - Default
   - TransparentFX

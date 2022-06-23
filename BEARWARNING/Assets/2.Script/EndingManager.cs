@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 public class EndingManager : MonoBehaviour
 {
-
+    //변수 
     public Animator bear_anim;
-
     public Text end_title;
     public Image end_img;
     public Sprite die_img;
@@ -19,17 +18,26 @@ public class EndingManager : MonoBehaviour
 
 
 
+
+    //게임이 끝났을때 호출되는 함수 
     public void GameDie()
     {
+
+        //죽었다면 
         if(isDie)
         {
+            //뒤집어진 카 활성화
             car.SetActive(true);
+            //곰 위치 변경
             bear_qt.eulerAngles = new Vector3(0, 270, 0);
+            
+            //텍스트 변경 
             end_title.text = "DIE";
             end_img.sprite = die_img;
             end_img.GetComponentInChildren<Text>().text = "곰을 만나고 죽은 시간 " + GameManager.instance.lastTime;
             end_text.text = "조심하라고 했는데… \n안타까운 죽음이군요";
             bear_anim.SetTrigger("Die");
+           
         }
         
     }
@@ -39,13 +47,8 @@ public class EndingManager : MonoBehaviour
     void Start()
     {
         GameDie();
+        //죽지 않았다면 곰 애니메이션 Win
         bear_anim.SetTrigger("Win");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 
@@ -68,4 +71,7 @@ public class EndingManager : MonoBehaviour
         SceneManager.LoadScene(0);
 
     }
+    //미션 성공했다면 
+
+
 }
