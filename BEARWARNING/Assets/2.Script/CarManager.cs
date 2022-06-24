@@ -10,14 +10,15 @@ public class CarManager : MonoBehaviour
     public GameObject playOn;
 
     //카메라개수, 코인개수
-    int camera_eat,coin_eat;
+    int camera_eat;
 
-    Color color;
 
     private void Update()
     {
       
+
     }
+
 
     //플레이어가 콜라이더에 닿았다면
     private void OnCollisionEnter(Collision collision)
@@ -46,39 +47,8 @@ public class CarManager : MonoBehaviour
         }    
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        switch (other.gameObject.tag)
-        {
-            ////코인이면
-            //case "Coin":
-
-            //    coin_eat++;
-
-            //    //증가한 코인을 UI 적용
-            //    playOn.GetComponent<GameUIManager>().CoinEat(coin_eat);
-
-            //    //먹은 코인 삭제
-            //    Destroy(other.gameObject);
-
-            //    break;
-            
-            //카메라라면
-            case "Camera":
-                ////카메라 개수 증가
-                camera_eat++;
-                //증가한 카메라 멘트 UI적용
-                playOn.GetComponent<GameUIManager>().CameraEat(camera_eat);
-                //먹은 코인 삭제
-                Destroy(other.gameObject);
-                break;
-        }
-
-    }
-
-
     //플레이어가 콜라이어에 닿았다면 (트리거)
-    void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.tag)
         {
@@ -89,20 +59,27 @@ public class CarManager : MonoBehaviour
                 playOn.SetActive(true);
                 break;
 
-            ////코인이면
-            //case "Coin":
+            //코인이면
+            case "Coin":
+                //print(other.gameObject.name);
+                //증가한 코인을 UI 적용
+                playOn.GetComponent<GameUIManager>().CoinEat();
 
-            //  SpriteRenderer coinColor= other.GetComponent<SpriteRenderer>();
-            //    color.a = 0;
-            //    coinColor.color = color;
-            //    break;
+                //먹은 코인 삭제
+                Destroy(other.gameObject);
+
+                break;
 
             //카메라라면
             case "Camera":
-                SpriteRenderer cameraColor = other.GetComponent<SpriteRenderer>();
-                color.a = 0;
-                cameraColor.color = color;
+                ////카메라 개수 증가
+                camera_eat++;
+                //증가한 카메라 멘트 UI적용
+                playOn.GetComponent<GameUIManager>().CameraEat(camera_eat);
+                //먹은 코인 삭제
+                Destroy(other.gameObject);
                 break;
+
 
             //꿀이라면
             case "Honey":
@@ -112,8 +89,6 @@ public class CarManager : MonoBehaviour
                 Destroy(other.gameObject);
                 break;
         }
-
-
     }
 
-}
+    }

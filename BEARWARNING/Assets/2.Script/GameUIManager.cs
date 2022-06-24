@@ -29,8 +29,10 @@ public class GameUIManager : MonoBehaviour
     public Image item_img;
     public Sprite[] items;
 
-    
+    int coin;
 
+    float oil_sec;
+    public Slider oil_slider;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +74,7 @@ public class GameUIManager : MonoBehaviour
 
         //시간초 시작
         time += Time.deltaTime;
-
+        oil_sec += Time.deltaTime;
         sec = (int)time;
 
         if(sec==60)
@@ -86,6 +88,29 @@ public class GameUIManager : MonoBehaviour
         //게임 오브젝트에 시간 넣어주기 
         GameManager.instance.lastTime = playTime.text;
 
+        //주유슬라이더 감소 
+        OilUpate();
+    }
+
+    //주유 업데이트 함수
+    public void OilUpate()
+    {
+        //게임이 시작되고 10초뒤에 
+        if(oil_sec>10f)
+        {
+            //다시 10초 셀 수 있도록 초기화
+            oil_sec = 0;
+            //슬라이더의 값은 10씩 감소
+            oil_slider.value -= 0.1f;
+        }
+
+        //만약 주유 값이 0이라면 
+        if(oil_slider.value<=0f)
+        {
+            //플레이어 못움직이게 
+            GameManager.instance.min = 0;
+            GameManager.instance.max = 0;
+        }
     }
 
 
@@ -103,25 +128,20 @@ public class GameUIManager : MonoBehaviour
 
 
     //코인을 먹었을때 호출 
-    public void CoinEat(int coin)
+    public void CoinEat()
     {
+        coin++;
         //코인을 3개 먹었다면 
         if (coin == 10)
         {
             //코인 초기화
             coin = 0;
             //슬롯에 기름 아이템 생성
-            item_img.sprite = items[0];
-
+            item_img.sprite = items[0]; 
         }
-        
-        
-       
         //코인 개수 업데이트 
         texts[0].text = "X" + coin;
     }
-
-
 
     //카메라 먹었을때 호출 
     public void CameraEat(int camera)
@@ -132,8 +152,6 @@ public class GameUIManager : MonoBehaviour
         //슬롯에 카메라 아이템 생성 
         item_img.sprite = items[1];
 
-
-
     }
 
     //꿀아이템 먹었을때 호출 
@@ -142,4 +160,6 @@ public class GameUIManager : MonoBehaviour
         //슬롯에 꿀 아이템 생성 
         item_img.sprite = items[2];
     }
+
+    
 }
