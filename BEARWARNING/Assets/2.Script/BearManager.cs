@@ -25,6 +25,7 @@ public class BearManager : MonoBehaviour
     //도망치라는 텍스트 
     public GameObject runText;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,6 @@ public class BearManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         //플레이어 위치 가져오기
         player = FindObjectOfType<CarController>().transform;
-       
     }
 
     // Update is called once per frame
@@ -45,9 +45,11 @@ public class BearManager : MonoBehaviour
             BeforeMove();
             //도망치라는 멘트 활성화
             runText.SetActive(true);
+
+
         }
-       //움직이고 있다면 
-        if(isMove)
+        //움직이고 있다면 
+        if (isMove)
         {
             //도망치라는 멘트 비활성화
             runText.SetActive(false);
@@ -58,50 +60,47 @@ public class BearManager : MonoBehaviour
 
     }
 
-
     //곰이움직이는 함수
     void BearMove()
     {
+
         //곰의 움직이는 거리를 플레이어의 위치로
         agent.destination = player.position;
         //print("곰이 따라오는거 시작");
     }
-
 
     //움직이기 전 숫자 표시 함수
     void BeforeMove()
     {
 
         //시간 (초 세기위해서)
-        time +=Time.deltaTime;
-        
-        
+        time += Time.deltaTime;
 
         //플롯 시간을 인트로 변환해줌 
         int sec = (int)time;
         //1초가 지났다면
-        if(sec==1)
+        if (sec == 1)
         {
             //2라는 스프라이트를 이미지에 저장
             number_Img.sprite = number_sprite[0];
         }
         //2초가 지났다면
-        else if(sec ==2)
+        else if (sec == 2)
         {
             //1이라는 스프라이트를 이미지에 저장
             number_Img.sprite = number_sprite[1];
         }
         //3초가 지났다면 
-        else if(sec ==3)
+        else if (sec == 3)
         {
             //이미지 UI비활성화
             number_Img.gameObject.SetActive(false);
             //움직이기 시작
             isMove = true;
-           
+
         }
-   
-       
+
+
     }
 
     private void OnTriggerEnter(Collider other)

@@ -13,7 +13,7 @@ public class GameUIManager : MonoBehaviour
     //원하는 위치
     float desired_pos;
     //차스피드
-    float carSpeed;
+    int carSpeed;
 
     //시간 초,분
     float time;
@@ -41,7 +41,6 @@ public class GameUIManager : MonoBehaviour
         FindObjectOfType<BearManager>().isON = true;
         texts = GetComponentsInChildren<Text>();
         car = FindObjectOfType<CarManager>().transform;
-
 
     }
     void Update()
@@ -85,7 +84,7 @@ public class GameUIManager : MonoBehaviour
     private void FixedUpdate()
     {
         //카메라스피드 = 차컨트롤러에 스피드넣어주기 
-        carSpeed =CarController.speed;
+        carSpeed =(int)CarController.speed;
         //대시보드 함수 호출
         UpdateNeedle();
         //시간 시작
@@ -97,7 +96,6 @@ public class GameUIManager : MonoBehaviour
     //대쉬보드
     public void UpdateNeedle()
     {
-
         //원하는 위치 구하기
         desired_pos = start_pos - end_pos;
         //차 스피드를 temp 180으로 나누기

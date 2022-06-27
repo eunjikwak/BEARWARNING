@@ -13,7 +13,7 @@ public class CarController : MonoBehaviour
     public static float speed = 0.0f;
 
    
-    public float rpm;
+   
     //엑셀 (앞/뒤)
     public enum Axel
     {
@@ -88,10 +88,9 @@ public class CarController : MonoBehaviour
             GetInputs();
             //바퀴 움직이는 함수
             AnimateWheels();
-
+        
             minAcceleration = GameManager.instance.min;
             maxAcceleration = GameManager.instance.max;
-
 
             speedTxt.text = speed.ToString("00");
 
@@ -113,9 +112,11 @@ public class CarController : MonoBehaviour
         //키값 받아오는 함수
         void GetInputs()
         {
-            moveInput = Input.GetAxis("Vertical");
+            moveInput = Input.GetAxis("Vertical") * Time.deltaTime;
             steerInput = Input.GetAxis("Horizontal");
         }
+
+
 
     //움직이는 함수 
     void Move()
@@ -123,16 +124,11 @@ public class CarController : MonoBehaviour
         foreach (var wheel in wheels)
         {
             //바퀴에 회전력을 넣어줘서 움직이게 함 
-            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
-            rpm = wheel.wheelCollider.rpm*Time.deltaTime;
+            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration;
+      
         }
-
- 
-          //speed = rig.velocity.magnitude*10f;
            speed = Mathf.Clamp(rig.velocity.magnitude * 3.78f*5f, 0, maxAcceleration);
 
-
-      
     }
 
     
@@ -163,8 +159,6 @@ public class CarController : MonoBehaviour
                     //휠 콜라이더 브레이크 회전력을 멈추기
                     wheel.wheelCollider.brakeTorque = 300 * brakeAcceleration * Time.deltaTime;
                 }
-
-            
 
             }
             else
