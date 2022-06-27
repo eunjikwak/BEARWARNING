@@ -14,11 +14,12 @@ public class GameManager : MonoBehaviour
     public Texture2D carSkin;
     //자동차 기능 값 랜덤
     public int hp, min, max;
-
-
     //시간 
     public string lastTime;
 
+    //아이템 사용 유무 
+    public bool isOil,isHoney;
+    public int CameraClick;
 
     
    

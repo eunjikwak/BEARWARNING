@@ -465,7 +465,7 @@ MonoBehaviour:
   end_text: {fileID: 800745859}
   bear_qt: {fileID: 164345062}
   car: {fileID: 6725941046487133214}
-  Mission: {fileID: 334115569}
+  HiddenMission_txt: {fileID: 334115569}
 --- !u!4 &178430408
 Transform:
   m_ObjectHideFlags: 0

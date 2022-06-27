@@ -11,13 +11,13 @@ public class CarManager : MonoBehaviour
 
     //카메라개수, 코인개수
     int camera_eat;
-
+   
 
     private void Update()
     {
-      
 
     }
+
 
 
     //플레이어가 콜라이더에 닿았다면

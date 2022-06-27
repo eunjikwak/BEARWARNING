@@ -15,6 +15,7 @@ public class EndingManager : MonoBehaviour
     public Transform bear_qt;
     public GameObject car;
     public static bool isDie;
+    public Text HiddenMission_txt;
 
 
 
@@ -46,6 +47,10 @@ public class EndingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GameManager.instance.CameraClick==3)
+        {
+            HiddenMission_txt.text = "히든 미션 성공";
+        }
         GameDie();
         //죽지 않았다면 곰 애니메이션 Win
         bear_anim.SetTrigger("Win");

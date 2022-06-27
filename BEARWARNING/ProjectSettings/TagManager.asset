@@ -12,6 +12,7 @@ TagManager:
   - Camera
   - Honey
   - Oil
+  - HoneyAttck
   layers:
   - Default
   - TransparentFX

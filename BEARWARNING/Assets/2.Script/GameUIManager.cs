@@ -26,7 +26,7 @@ public class GameUIManager : MonoBehaviour
     
     //코인텍스트, 카메라텍스트 배열
     Text[] texts;
-    public Image item_img;
+    public Image itemSlot;
     public Sprite[] items;
 
     int coin;
@@ -34,13 +34,52 @@ public class GameUIManager : MonoBehaviour
     float oil_sec;
     public Slider oil_slider;
 
+    Transform car;
     // Start is called before the first frame update
     void Start()
     {
         FindObjectOfType<BearManager>().isON = true;
         texts = GetComponentsInChildren<Text>();
-      
+        car = FindObjectOfType<CarManager>().transform;
 
+
+    }
+    void Update()
+    {
+      
+        //기름,카메라,꿀
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+
+            if (itemSlot.sprite == items[0])
+            {
+                print("아이템 안들어감");
+
+            }
+            else if (itemSlot.sprite == items[1])
+            {
+                //print("오일사용");
+
+                Oil_Use();
+                itemSlot.sprite = items[0];
+
+            }
+            else if (itemSlot.sprite == items[2])
+            {
+                //print("카메라 사용");
+                Camera_Use();
+                itemSlot.sprite = items[0];
+            }
+            else if (itemSlot.sprite == items[3])
+            {
+                //print("꿀사용");
+                Honey_Use();
+                itemSlot.sprite = items[0];
+            }
+
+
+
+        }
     }
 
     private void FixedUpdate()
@@ -104,6 +143,13 @@ public class GameUIManager : MonoBehaviour
             oil_slider.value -= 0.1f;
         }
 
+        if(GameManager.instance.isOil)
+        {
+            oil_slider.value = 1;
+            GameManager.instance.isOil = false;
+            oil_sec = 0;
+        }
+        
         //만약 주유 값이 0이라면 
         if(oil_slider.value<=0f)
         {
@@ -111,6 +157,8 @@ public class GameUIManager : MonoBehaviour
             GameManager.instance.min = 0;
             GameManager.instance.max = 0;
         }
+
+
     }
 
 
@@ -137,7 +185,7 @@ public class GameUIManager : MonoBehaviour
             //코인 초기화
             coin = 0;
             //슬롯에 기름 아이템 생성
-            item_img.sprite = items[0]; 
+            itemSlot.sprite = items[1];
         }
         //코인 개수 업데이트 
         texts[0].text = "X" + coin;
@@ -145,12 +193,12 @@ public class GameUIManager : MonoBehaviour
 
     //카메라 먹었을때 호출 
     public void CameraEat(int camera)
-    { 
-       
+    {
+
         //카메라 개수 업데이트 
-        texts[1].text = "X"+camera;
+        texts[1].text = "X" + camera;
         //슬롯에 카메라 아이템 생성 
-        item_img.sprite = items[1];
+        itemSlot.sprite = items[2];
 
     }
 
@@ -158,8 +206,36 @@ public class GameUIManager : MonoBehaviour
     public void HoneyEat()
     {
         //슬롯에 꿀 아이템 생성 
-        item_img.sprite = items[2];
+        itemSlot.sprite = items[3];
     }
 
-    
+
+    void Oil_Use()
+    {
+        print("오일 초기화!");
+        GameManager.instance.isOil = true;
+    }
+
+    void Camera_Use()
+    {
+        print("찰칵");
+        GameManager.instance.CameraClick++;
+
+        
+    }
+
+    void Honey_Use()
+    {
+        print("꿀공격");
+
+        GameObject honey = Instantiate(Resources.Load("Splash")) as GameObject;
+
+        honey.transform.position = car.position;
+        honey.transform.position += new Vector3(0, 0.07f, 0);
+
+
+
+        GameManager.instance.isHoney = true;
+    }
+
 }

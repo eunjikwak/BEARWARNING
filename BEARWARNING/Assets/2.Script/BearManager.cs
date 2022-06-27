@@ -104,5 +104,18 @@ public class BearManager : MonoBehaviour
        
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag=="HoneyAttck")
+        {
+           
+            print("¾Æ¾Ç! °õ ³Ñ¾îÁü ");
+            agent.isStopped = true;
+
+            Destroy(other.gameObject, 5);
+
+           
+        }
+    }
 
 }
