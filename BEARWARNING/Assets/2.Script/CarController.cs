@@ -69,6 +69,11 @@ public class CarController : MonoBehaviour
     private Rigidbody rig;
 
     //private CarLights carLights;
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
+
 
     void Start()
     {
@@ -107,12 +112,10 @@ public class CarController : MonoBehaviour
             Brake();
         }
 
-
-
         //키값 받아오는 함수
         void GetInputs()
         {
-            moveInput = Input.GetAxis("Vertical") * Time.deltaTime;
+            moveInput = Input.GetAxis("Vertical");
             steerInput = Input.GetAxis("Horizontal");
         }
 
@@ -124,7 +127,7 @@ public class CarController : MonoBehaviour
         foreach (var wheel in wheels)
         {
             //바퀴에 회전력을 넣어줘서 움직이게 함 
-            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration;
+            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
       
         }
            speed = Mathf.Clamp(rig.velocity.magnitude * 3.78f*5f, 0, maxAcceleration);
