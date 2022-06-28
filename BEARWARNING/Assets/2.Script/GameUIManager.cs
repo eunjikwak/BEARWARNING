@@ -9,7 +9,7 @@ public class GameUIManager : MonoBehaviour
     public GameObject needle;
 
     //시작점,끝점
-    float start_pos = 220f, end_pos = -42f;
+    float start_pos = 220f, end_pos = -45f;
     //원하는 위치
     float desired_pos;
     //차스피드
@@ -30,6 +30,7 @@ public class GameUIManager : MonoBehaviour
     public Sprite[] items;
 
     int coin;
+
 
     float oil_sec;
     public Slider oil_slider;
@@ -101,7 +102,7 @@ public class GameUIManager : MonoBehaviour
         //차 스피드를 temp 180으로 나누기
         float temp = carSpeed / 180f;
         //바늘 각도 구하기
-        needle.transform.eulerAngles = new Vector3(0, 0, start_pos - temp * desired_pos);
+        needle.transform.eulerAngles = new Vector3(0, 0, start_pos - temp * desired_pos) ;
     }
 
 
@@ -190,11 +191,8 @@ public class GameUIManager : MonoBehaviour
     }
 
     //카메라 먹었을때 호출 
-    public void CameraEat(int camera)
+    public void CameraEat()
     {
-
-        //카메라 개수 업데이트 
-        texts[1].text = "X" + camera;
         //슬롯에 카메라 아이템 생성 
         itemSlot.sprite = items[2];
 
@@ -216,8 +214,13 @@ public class GameUIManager : MonoBehaviour
 
     void Camera_Use()
     {
-        print("찰칵");
+
+        //카메라 클릭
         GameManager.instance.CameraClick++;
+        print("찰칵");
+        //카메라 개수 업데이트 
+        texts[1].text = "X" + GameManager.instance.CameraClick;
+       
 
         
     }
@@ -229,7 +232,7 @@ public class GameUIManager : MonoBehaviour
         GameObject honey = Instantiate(Resources.Load("Splash")) as GameObject;
 
         honey.transform.position = car.position;
-        honey.transform.position += new Vector3(0, 0.07f, 0);
+        honey.transform.position += new Vector3(0, 0.1f, 0);
 
 
 

@@ -65,8 +65,11 @@ public class BearManager : MonoBehaviour
     {
 
         //곰의 움직이는 거리를 플레이어의 위치로
+      
         agent.destination = player.position;
         //print("곰이 따라오는거 시작");
+
+       
     }
 
     //움직이기 전 숫자 표시 함수

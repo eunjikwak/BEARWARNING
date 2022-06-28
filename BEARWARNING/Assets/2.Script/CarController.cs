@@ -45,7 +45,7 @@ public class CarController : MonoBehaviour
 
 
     //브레이크 가속
-    public float brakeAcceleration = 100.0f;
+    public float brakeAcceleration = 1000.0f;
 
     //회전 감도
     public float turnSensitivity = 1.0f;
@@ -71,7 +71,7 @@ public class CarController : MonoBehaviour
     //private CarLights carLights;
     private void Awake()
     {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
     }
 
 
@@ -127,13 +127,13 @@ public class CarController : MonoBehaviour
         foreach (var wheel in wheels)
         {
             //바퀴에 회전력을 넣어줘서 움직이게 함 
-            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration * Time.deltaTime;
-      
+            wheel.wheelCollider.motorTorque = moveInput * minAcceleration * maxAcceleration*0.05f;
+            
         }
-           speed = Mathf.Clamp(rig.velocity.magnitude * 3.78f*5f, 0, maxAcceleration);
+           speed = Mathf.Clamp(rig.velocity.magnitude * 3.78f, 0, maxAcceleration);
 
     }
-
+    
     
 
         void Steer()
@@ -146,7 +146,7 @@ public class CarController : MonoBehaviour
                     //핸들 각도 = 핸들받아온 값 * 회전 감도 * 최대 핸들각도
                     var _steerAngle = steerInput * turnSensitivity * maxSteerAngle;
                     //바퀴가 기존 핸들 각도에서 0.6속도로  _핸들각도로 변화된다. 
-                    wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, _steerAngle, 0.6f);
+                    wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, _steerAngle, 0.7f);
                 }
             }
         }
@@ -160,7 +160,7 @@ public class CarController : MonoBehaviour
                 foreach (var wheel in wheels)
                 {
                     //휠 콜라이더 브레이크 회전력을 멈추기
-                    wheel.wheelCollider.brakeTorque = 300 * brakeAcceleration * Time.deltaTime;
+                    wheel.wheelCollider.brakeTorque = 300*1000 * brakeAcceleration;
                 }
 
             }

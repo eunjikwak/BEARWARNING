@@ -72,11 +72,8 @@ public class CarManager : MonoBehaviour
 
             //카메라라면
             case "Camera":
-                ////카메라 개수 증가
-                camera_eat++;
-                //증가한 카메라 멘트 UI적용
-                playOn.GetComponent<GameUIManager>().CameraEat(camera_eat);
-                //먹은 코인 삭제
+                playOn.GetComponent<GameUIManager>().CameraEat();
+                //먹은 카메라 삭제
                 Destroy(other.gameObject);
                 break;
 
