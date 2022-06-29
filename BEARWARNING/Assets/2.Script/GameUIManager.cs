@@ -36,6 +36,8 @@ public class GameUIManager : MonoBehaviour
     public Slider oil_slider;
 
     Transform car;
+
+    public RaycastHit hit;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,8 @@ public class GameUIManager : MonoBehaviour
     }
     void Update()
     {
+
+
       
         //기름,카메라,꿀
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -218,8 +222,8 @@ public class GameUIManager : MonoBehaviour
         //카메라 클릭
         GameManager.instance.CameraClick++;
         print("찰칵");
-        //카메라 개수 업데이트 
-        texts[1].text = "X" + GameManager.instance.CameraClick;
+        ////카메라 개수 업데이트 
+        //texts[1].text = "X" + GameManager.instance.CameraClick;
        
 
         
@@ -229,14 +233,14 @@ public class GameUIManager : MonoBehaviour
     {
         print("꿀공격");
 
-        GameObject honey = Instantiate(Resources.Load("Splash")) as GameObject;
-
-        honey.transform.position = car.position;
-        honey.transform.position += new Vector3(0, 0.1f, 0);
-
-
+        GameObject honey = Instantiate(Resources.Load("Splash1"), hit.point, Quaternion.LookRotation(hit.point)) as GameObject;
+        //GameObject honey = Instantiate(Resources.Load("Splash"), hit.point, Quaternion.LookRotation(hit.normal)) as GameObject;
+        //honey.transform.position = car.position;
+        //honey.transform.position += new Vector3(0, 0.1f, 0);
+        honey.transform.position += honey.transform.forward * 0.1f;
+        
 
         GameManager.instance.isHoney = true;
     }
-
+    
 }

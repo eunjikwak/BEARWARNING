@@ -11,11 +11,20 @@ public class CarManager : MonoBehaviour
 
     //카메라개수, 코인개수
     int camera_eat;
-   
+
+
+  
 
     private void Update()
     {
+       RaycastHit hit;
+    Debug.DrawRay(transform.position+new Vector3(0,1f,0), Vector3.down * 1, Color.red);
 
+        if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.down, out hit))
+        {
+            print(hit.collider.name);
+            playOn.GetComponent<GameUIManager>().hit = hit;
+        }
     }
 
 

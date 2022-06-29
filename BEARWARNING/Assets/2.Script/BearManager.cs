@@ -26,6 +26,19 @@ public class BearManager : MonoBehaviour
     public GameObject runText;
 
 
+    public enum EnmeyState
+    {
+        Idle,
+        Walk,
+        Run,
+        Attak,
+        Damaged
+    }
+
+    public EnmeyState eState;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +70,79 @@ public class BearManager : MonoBehaviour
             BearMove();
         }
 
+
+        switch (eState)
+        {
+            case EnmeyState.Idle: Idle(); break;
+            case EnmeyState.Walk: Walk(); break;
+            case EnmeyState.Run: Run(); break;
+            case EnmeyState.Attak: Attack(); break;
+            case EnmeyState.Damaged: Damged(); break;
+
+        }
+
+
+    }
+
+    void Idle()
+    {
+        //기본애니메이션 
+
+        //플레이어가 3초가 지나면 Walk함수 전환
+
+        //플레이어와 멀어졌다면 
+
+        //Walk상태전환
+    }
+
+    void Walk()
+    {
+        //걷는 애니메이션
+
+        //플레이어와 가까워지면 
+
+        //어택 전환 
+
+        //플레이어와 멀어지면 
+
+        //런 전환
+
+
+    }
+
+    void Run()
+    {
+        //걷는 애니메이션*2
+
+        //플레이어와 가까워지면 
+
+        //walk 화면 전환 
+
+
+
+
+    }
+
+    void Attack()
+    {
+        //공격 애니메이션
+
+        //공격해서 자동차가 맞았다면 
+
+        //Hp감소 
+
+        //플레이어와 멀어졌다면 
+
+        //Walk 화면 전환
+    }
+
+    void Damged()
+    {
+
+
+        //꿀 아이템에 닿았다면 
+        //맞는 애니메이션
+        //아이들 상태 전환 
 
     }
 
@@ -114,7 +200,7 @@ public class BearManager : MonoBehaviour
             print("아악! 곰 넘어짐 ");
             agent.isStopped = true;
 
-            Destroy(other.gameObject, 5);
+            //Destroy(other.gameObject, 5);
 
            
         }

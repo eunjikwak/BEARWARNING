@@ -45,7 +45,7 @@ public class CarController : MonoBehaviour
 
 
     //브레이크 가속
-    public float brakeAcceleration = 1000.0f;
+    public float brakeAcceleration = 100.0f;
 
     //회전 감도
     public float turnSensitivity = 1.0f;
@@ -160,7 +160,7 @@ public class CarController : MonoBehaviour
                 foreach (var wheel in wheels)
                 {
                     //휠 콜라이더 브레이크 회전력을 멈추기
-                    wheel.wheelCollider.brakeTorque = 300*1000 * brakeAcceleration;
+                    wheel.wheelCollider.brakeTorque = brakeAcceleration*300000f;
                 }
 
             }
