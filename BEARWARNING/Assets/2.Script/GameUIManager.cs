@@ -153,13 +153,13 @@ public class GameUIManager : MonoBehaviour
             oil_sec = 0;
         }
         
-        //만약 주유 값이 0이라면 
-        if(oil_slider.value<=0f)
-        {
-            //플레이어 못움직이게 
-            GameManager.instance.min = 0;
-            GameManager.instance.max = 0;
-        }
+        ////만약 주유 값이 0이라면 
+        //if(oil_slider.value<=0f)
+        //{
+        //    //플레이어 못움직이게 
+        //    GameManager.instance.min = 0;
+        //    GameManager.instance.max = 0;
+        //}
 
 
     }

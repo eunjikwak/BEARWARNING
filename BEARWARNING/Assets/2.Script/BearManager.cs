@@ -25,6 +25,7 @@ public class BearManager : MonoBehaviour
     //도망치라는 텍스트 
     public GameObject runText;
 
+    Animator anim;
 
     public enum EnmeyState
     {
@@ -32,7 +33,8 @@ public class BearManager : MonoBehaviour
         Walk,
         Run,
         Attak,
-        Damaged
+        Damaged,
+        Die
     }
 
     public EnmeyState eState;
@@ -42,10 +44,13 @@ public class BearManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        eState = EnmeyState.Idle;
         //애너미 AI
         agent = GetComponent<NavMeshAgent>();
         //플레이어 위치 가져오기
         player = FindObjectOfType<CarController>().transform;
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,7 +66,7 @@ public class BearManager : MonoBehaviour
 
 
         }
-        //움직이고 있다면 
+
         if (isMove)
         {
             //도망치라는 멘트 비활성화
@@ -71,13 +76,14 @@ public class BearManager : MonoBehaviour
         }
 
 
-        switch (eState)
+            switch (eState)
         {
             case EnmeyState.Idle: Idle(); break;
             case EnmeyState.Walk: Walk(); break;
             case EnmeyState.Run: Run(); break;
             case EnmeyState.Attak: Attack(); break;
-            case EnmeyState.Damaged: Damged(); break;
+            case EnmeyState.Damaged:  break;
+            case EnmeyState.Die: Die(); break;
 
         }
 
@@ -86,63 +92,100 @@ public class BearManager : MonoBehaviour
 
     void Idle()
     {
-        //기본애니메이션 
+      if(isMove)
+        {
+            
+            //플레이어와 가까워 졌다면 
+            if (Vector3.Distance(transform.position, player.position) < 7f)
+            {
+                //어택 전환
+                eState = EnmeyState.Attak;
+                //어택 애니메이션 
+                anim.SetBool("IsAttack", true);
+                agent.isStopped = true;
+            }
+            //플레이어가 3초가 지나고 플레이어와 멀어졌다면
+            else if (Vector3.Distance(transform.position, player.position) > 10f)
+            {
+                //Walk상태전환
+                eState = EnmeyState.Walk;
+                //워크 애니메이션
+                anim.SetBool("IsWalk", true);
+                agent.isStopped = false;
 
-        //플레이어가 3초가 지나면 Walk함수 전환
+            }
+        }
 
-        //플레이어와 멀어졌다면 
-
-        //Walk상태전환
+       
     }
 
     void Walk()
     {
         //걷는 애니메이션
 
-        //플레이어와 가까워지면 
-
-        //어택 전환 
-
+        //플레이어와 가까워졌다면 
+        if (Vector3.Distance(transform.position,player.position)<10f)
+        {
+            //기본 상태 전환
+            eState = EnmeyState.Idle;
+            anim.SetBool("IsWalk", false) ;
+            agent.isStopped = true;
+        }
         //플레이어와 멀어지면 
+        else if(Vector3.Distance(transform.position, player.position) > 30f)
+        {
+            //뛰는 상태 전환
+            eState = EnmeyState.Run;
+            anim.SetBool("IsRun", true);
+            agent.speed = 30f;
 
-        //런 전환
-
+        }
 
     }
 
     void Run()
     {
-        //걷는 애니메이션*2
-
         //플레이어와 가까워지면 
-
-        //walk 화면 전환 
-
-
+        if (Vector3.Distance(transform.position,player.position)<300f)
+        {  //walk 화면 전환 
+            eState = EnmeyState.Walk;
+            anim.SetBool("IsRun", false);
+            agent.speed = 15f;
+        }
 
 
     }
 
     void Attack()
     {
+
+        print("공격");
+        //어택 애니메이션 
+        anim.SetBool("IsAttack", false);
+        //아이들 전환
+        eState = EnmeyState.Idle;
+        
+       
         //공격 애니메이션
 
         //공격해서 자동차가 맞았다면 
 
         //Hp감소 
 
-        //플레이어와 멀어졌다면 
+        //공격이 끝나면
 
-        //Walk 화면 전환
+        //기본상태 전환
     }
 
-    void Damged()
+
+
+    void Die()
     {
+        //플레이어가 엔딩포인트에 도착했다면 
 
-
-        //꿀 아이템에 닿았다면 
-        //맞는 애니메이션
-        //아이들 상태 전환 
+        agent.isStopped = true;
+        anim.SetTrigger("Die");
+        // 애너미 멈추기 
 
     }
 
@@ -198,9 +241,11 @@ public class BearManager : MonoBehaviour
         {
            
             print("아악! 곰 넘어짐 ");
-            agent.isStopped = true;
+            
+            //agent.isStopped = true;
 
-            //Destroy(other.gameObject, 5);
+            anim.SetTrigger("Hit");
+           // Destroy(other.gameObject, 3);
 
            
         }

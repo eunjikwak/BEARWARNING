@@ -378,8 +378,8 @@ ModelImporter:
       name: Bear_idle
       takeName: Bear_idle
       internalID: 0
-      firstFrame: 80
-      lastFrame: 260
+      firstFrame: 151
+      lastFrame: 179
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -402,7 +402,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 80
     - serializedVersion: 16
       name: Bear_attack
       takeName: Bear_attack
