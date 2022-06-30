@@ -22,39 +22,39 @@ public class CarManager : MonoBehaviour
 
         if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.down, out hit))
         {
-            print(hit.collider.name);
+           // print(hit.collider.name);
             playOn.GetComponent<GameUIManager>().hit = hit;
         }
     }
 
 
 
-    //플레이어가 콜라이더에 닿았다면
-    private void OnCollisionEnter(Collision collision)
-    {
-        //태그가 닿았다면 
-        switch(collision.gameObject.tag)
-        {
+    ////플레이어가 콜라이더에 닿았다면
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //태그가 닿았다면 
+    //    switch(collision.gameObject.tag)
+    //    {
 
-            //곰이랑 부딪혔다면 
-            case "Bear":    
+    //        //곰이랑 부딪혔다면 
+    //        case "Bear":    
 
-                //hp 감소
-                GameManager.instance.hp--;
-                //감소한 hp UI적용
-                playOn.GetComponent<GameUIManager>().hpUpdate();
-                //만약 hp가 없다면 
-                if(GameManager.instance.hp==0)
-                {
-                    //새드엔딩으로 전환
-                    FindObjectOfType<SettingManager>().DieClick();
+    //            //hp 감소
+    //            GameManager.instance.hp--;
+    //            //감소한 hp UI적용
+    //            playOn.GetComponent<GameUIManager>().hpUpdate();
+    //            //만약 hp가 없다면 
+    //            if(GameManager.instance.hp==0)
+    //            {
+    //                //새드엔딩으로 전환
+    //                FindObjectOfType<SettingManager>().DieClick();
 
-                }
-                break;
+    //            }
+    //            break;
 
             
-        }    
-    }
+    //    }    
+    //}
 
     //플레이어가 콜라이어에 닿았다면 (트리거)
     private void OnTriggerEnter(Collider other)

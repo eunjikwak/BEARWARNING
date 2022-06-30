@@ -26,6 +26,7 @@ public class BearManager : MonoBehaviour
     public GameObject runText;
 
     Animator anim;
+    float coolTime;
 
     public enum EnmeyState
     {
@@ -82,7 +83,7 @@ public class BearManager : MonoBehaviour
             case EnmeyState.Walk: Walk(); break;
             case EnmeyState.Run: Run(); break;
             case EnmeyState.Attak: Attack(); break;
-            case EnmeyState.Damaged:  break;
+            case EnmeyState.Damaged: Damged(); break;
             case EnmeyState.Die: Die(); break;
 
         }
@@ -96,16 +97,15 @@ public class BearManager : MonoBehaviour
         {
             
             //플레이어와 가까워 졌다면 
-            if (Vector3.Distance(transform.position, player.position) < 7f)
+            if (Vector3.Distance(transform.position, player.position) < 10f)
             {
                 //어택 전환
                 eState = EnmeyState.Attak;
-                //어택 애니메이션 
-                anim.SetBool("IsAttack", true);
+               
                 agent.isStopped = true;
             }
             //플레이어가 3초가 지나고 플레이어와 멀어졌다면
-            else if (Vector3.Distance(transform.position, player.position) > 10f)
+            else if (Vector3.Distance(transform.position, player.position) >= 11f)
             {
                 //Walk상태전환
                 eState = EnmeyState.Walk;
@@ -116,6 +116,7 @@ public class BearManager : MonoBehaviour
             }
         }
 
+      
        
     }
 
@@ -124,7 +125,7 @@ public class BearManager : MonoBehaviour
         //걷는 애니메이션
 
         //플레이어와 가까워졌다면 
-        if (Vector3.Distance(transform.position,player.position)<10f)
+        if (Vector3.Distance(transform.position,player.position)<11f)
         {
             //기본 상태 전환
             eState = EnmeyState.Idle;
@@ -132,12 +133,12 @@ public class BearManager : MonoBehaviour
             agent.isStopped = true;
         }
         //플레이어와 멀어지면 
-        else if(Vector3.Distance(transform.position, player.position) > 30f)
+        else if(Vector3.Distance(transform.position, player.position) >= 30f)
         {
             //뛰는 상태 전환
             eState = EnmeyState.Run;
             anim.SetBool("IsRun", true);
-            agent.speed = 30f;
+            agent.speed = 50f;
 
         }
 
@@ -146,35 +147,54 @@ public class BearManager : MonoBehaviour
     void Run()
     {
         //플레이어와 가까워지면 
-        if (Vector3.Distance(transform.position,player.position)<300f)
+        if (Vector3.Distance(transform.position,player.position)<30f)
         {  //walk 화면 전환 
             eState = EnmeyState.Walk;
             anim.SetBool("IsRun", false);
-            agent.speed = 15f;
-        }
+         
+            agent.speed = 25f;
+            agent.acceleration = 10f;
 
+         
+        }
 
     }
 
     void Attack()
     {
-
-        print("공격");
-        //어택 애니메이션 
-        anim.SetBool("IsAttack", false);
-        //아이들 전환
-        eState = EnmeyState.Idle;
         
+        coolTime +=Time.deltaTime;
+
+
+        if(coolTime>=1f)
+        {
+            print("공격");
+            //어택 애니메이션 
+            anim.SetBool("IsAttack", true);
+            //hp 감소
+            GameManager.instance.hp--;
+            //감소한 hp UI적용
+            FindObjectOfType<GameUIManager>().hpUpdate();
+            coolTime = 0;
+
+        }
+        //만약 hp가 없다면 
+        if (GameManager.instance.hp == 0)
+        {
+            //새드엔딩으로 전환
+            FindObjectOfType<SettingManager>().DieClick();
+
+        }
+        //플레이어와 멀어 졌다면 
+        if (Vector3.Distance(transform.position, player.position) > 7f)
+        {
+            //아이들 전환
+            eState = EnmeyState.Walk;
+            anim.SetBool("IsAttack", false);
+
+        }
        
-        //공격 애니메이션
 
-        //공격해서 자동차가 맞았다면 
-
-        //Hp감소 
-
-        //공격이 끝나면
-
-        //기본상태 전환
     }
 
 
@@ -194,8 +214,8 @@ public class BearManager : MonoBehaviour
     {
 
         //곰의 움직이는 거리를 플레이어의 위치로
-      
-        agent.destination = player.position;
+
+        agent.SetDestination(player.position);
         //print("곰이 따라오는거 시작");
 
        
@@ -237,18 +257,23 @@ public class BearManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="HoneyAttck")
+        if (other.gameObject.tag == "HoneyAttck")
         {
-           
-            print("아악! 곰 넘어짐 ");
+            agent.isStopped = true;
+            eState = EnmeyState.Damaged;
             
-            //agent.isStopped = true;
 
-            anim.SetTrigger("Hit");
-           // Destroy(other.gameObject, 3);
+             Destroy(other.gameObject, 3);
 
-           
         }
+    }
+    void Damged()
+    {
+        print("아악! 곰 넘어짐 ");
+
+        anim.SetTrigger("Hit");
+
+        eState = EnmeyState.Idle;
     }
 
 }

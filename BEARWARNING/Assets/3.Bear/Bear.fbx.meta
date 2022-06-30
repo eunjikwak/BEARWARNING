@@ -465,7 +465,7 @@ ModelImporter:
       name: Bear_death
       takeName: Bear_death
       internalID: 0
-      firstFrame: 390
+      firstFrame: 426
       lastFrame: 464
       wrapMode: 0
       orientationOffsetY: 0
@@ -489,7 +489,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 390
     - serializedVersion: 16
       name: Bear_hit
       takeName: Bear_hit
