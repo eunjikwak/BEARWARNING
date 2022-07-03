@@ -63,9 +63,13 @@ public class CarManager : MonoBehaviour
         {
             //시작위치면
             case "StartLine":
-
                 //플레이 UI활성화
                 playOn.SetActive(true);
+                break;
+
+            //도착라인에 도착했다면 
+            case "FinishLine":
+                FindObjectOfType<SettingManager>().WinClick();
                 break;
 
             //코인이면

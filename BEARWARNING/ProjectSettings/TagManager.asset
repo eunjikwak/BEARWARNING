@@ -13,6 +13,7 @@ TagManager:
   - Honey
   - Oil
   - HoneyAttck
+  - FinishLine
   layers:
   - Default
   - TransparentFX
