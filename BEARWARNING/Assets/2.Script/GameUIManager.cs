@@ -233,7 +233,7 @@ public class GameUIManager : MonoBehaviour
     {
         print("²Ü°ø°Ý");
 
-        GameObject honey = Instantiate(Resources.Load("Splash1"), hit.point, Quaternion.LookRotation(hit.point)) as GameObject;
+        GameObject honey = Instantiate(Resources.Load("Splash"),hit.point, Quaternion.LookRotation(hit.point)) as GameObject;
         //GameObject honey = Instantiate(Resources.Load("Splash"), hit.point, Quaternion.LookRotation(hit.normal)) as GameObject;
         //honey.transform.position = car.position;
         //honey.transform.position += new Vector3(0, 0.1f, 0);

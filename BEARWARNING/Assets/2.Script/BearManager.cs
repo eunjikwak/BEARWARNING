@@ -58,6 +58,8 @@ public class BearManager : MonoBehaviour
         player = FindObjectOfType<CarController>().transform;
        //애니메이션
         anim = GetComponent<Animator>();
+        //회전 처리 못하게 하도록 비활성화
+        agent.updateRotation = false;
     }
     //움직이기 전 숫자 표시 함수
     void BeforeMove()
@@ -97,6 +99,8 @@ public class BearManager : MonoBehaviour
         //곰의 움직이는 거리를 플레이어의 위치로
         //agent.SetDestination(player.position);
         agent.destination = player.position;
+        Vector3 lookrotation = agent.steeringTarget - transform.position;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookrotation), 180f);
 
     }
 
@@ -182,7 +186,7 @@ public class BearManager : MonoBehaviour
             //뛰는 상태 전환
             eState = EnmeyState.Run;
             anim.SetBool("IsRun", true);
-            agent.speed = 50f;
+            agent.acceleration = 20f;
 
         }
 
@@ -195,7 +199,7 @@ public class BearManager : MonoBehaviour
         {  //walk 화면 전환 
             eState = EnmeyState.Walk;
             anim.SetBool("IsRun", false);
-            agent.speed = 25f;
+            agent.acceleration = 10f;
 
         }
 
