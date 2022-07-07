@@ -14,6 +14,8 @@ TagManager:
   - Oil
   - HoneyAttck
   - FinishLine
+  - Sheap
+  - Track
   layers:
   - Default
   - TransparentFX

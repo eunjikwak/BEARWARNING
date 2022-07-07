@@ -146,7 +146,7 @@ public class BearManager : MonoBehaviour
       if(isMove)
         {
             //플레이어와 가까워졌다면
-            if(Vector3.Distance(transform.position,player.position)<10f)
+            if(Vector3.Distance(transform.position,player.position)<7f)
             {
                 //공격 상태 전환 
                 eState = EnmeyState.Attak;
@@ -156,7 +156,7 @@ public class BearManager : MonoBehaviour
             }
             
             //플레이어와 멀어졌다면
-            else if (Vector3.Distance(transform.position, player.position) >= 15f)
+            else if (Vector3.Distance(transform.position, player.position) >= 8f)
             {
                 //Walk상태전환
                 eState = EnmeyState.Walk;
@@ -173,7 +173,7 @@ public class BearManager : MonoBehaviour
     void Walk()
     {
         //플레이어와 가까워졌다면 
-        if (Vector3.Distance(transform.position,player.position)<15f)
+        if (Vector3.Distance(transform.position,player.position)<8f)
         {
             //기본 상태 전환
             eState = EnmeyState.Idle;
@@ -186,7 +186,7 @@ public class BearManager : MonoBehaviour
             //뛰는 상태 전환
             eState = EnmeyState.Run;
             anim.SetBool("IsRun", true);
-            agent.acceleration = 20f;
+            agent.acceleration = 200f;
 
         }
 
@@ -199,7 +199,7 @@ public class BearManager : MonoBehaviour
         {  //walk 화면 전환 
             eState = EnmeyState.Walk;
             anim.SetBool("IsRun", false);
-            agent.acceleration = 10f;
+            agent.acceleration = 80f;
 
         }
 

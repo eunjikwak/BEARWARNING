@@ -12,6 +12,9 @@ public class CarManager : MonoBehaviour
     //카메라개수, 코인개수
     int camera_eat;
 
+    public GameObject sheap;
+
+    public Transform respwanPoint;
 
   
 
@@ -22,40 +25,22 @@ public class CarManager : MonoBehaviour
 
         if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.down, out hit))
         {
-           // print(hit.collider.name);
+                
+            if(hit.collider.tag=="test")
+            {
+                
+                  print( "리스폰 해야함");
+            }
+           print(hit.collider.tag);
             playOn.GetComponent<GameUIManager>().hit = hit;
         }
+
+
     }
 
 
 
-    ////플레이어가 콜라이더에 닿았다면
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    //태그가 닿았다면 
-    //    switch(collision.gameObject.tag)
-    //    {
-
-    //        //곰이랑 부딪혔다면 
-    //        case "Bear":    
-
-    //            //hp 감소
-    //            GameManager.instance.hp--;
-    //            //감소한 hp UI적용
-    //            playOn.GetComponent<GameUIManager>().hpUpdate();
-    //            //만약 hp가 없다면 
-    //            if(GameManager.instance.hp==0)
-    //            {
-    //                //새드엔딩으로 전환
-    //                FindObjectOfType<SettingManager>().DieClick();
-
-    //            }
-    //            break;
-
-            
-    //    }    
-    //}
-
+  
     //플레이어가 콜라이어에 닿았다면 (트리거)
     private void OnTriggerEnter(Collider other)
     {
@@ -97,6 +82,13 @@ public class CarManager : MonoBehaviour
                 playOn.GetComponent<GameUIManager>().HoneyEat();
                 //먹은 꿀 삭제
                 Destroy(other.gameObject);
+                break;
+
+            //양을 지나갔다면 
+            case "Sheap":
+
+                sheap.GetComponent<AnimalManager>().isSheapMove = true;
+
                 break;
         }
     }
